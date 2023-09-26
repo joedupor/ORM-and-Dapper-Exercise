@@ -39,6 +39,8 @@ namespace ORM_Dapper
 
             var productRepo = new DapperProductRepository(conn);    //instantiating the product repository
 
+            productRepo.DeleteProduct(885);                         // this line deleted product with id = 885
+
             var products = productRepo.GetAllProducts();
 
             foreach (var item in products)
