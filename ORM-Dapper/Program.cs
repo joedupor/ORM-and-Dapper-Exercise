@@ -17,6 +17,8 @@ namespace ORM_Dapper
 
             IDbConnection conn = new MySqlConnection(connString);
 
+#region Department Section
+
             var departmentRepo = new DapperDepartmentRepository(conn);
 
             departmentRepo.InsertDepartment("Xtra Large Electronics");
@@ -30,6 +32,30 @@ namespace ORM_Dapper
                 Console.WriteLine();
                 Console.WriteLine();
             }
+#endregion
+
+
+#region Product Section
+
+            var productRepo = new DapperProductRepository(conn);    //instantiating the product repository
+
+            var products = productRepo.GetAllProducts();
+
+            foreach (var item in products)
+            {
+                Console.WriteLine(item.ProductID);
+                Console.WriteLine(item.Name);
+                Console.WriteLine(item.Price);
+                Console.WriteLine(item.CategoryID);
+                Console.WriteLine(item.OnSale);
+                Console.WriteLine(item.StockLevel);
+                Console.WriteLine();
+                Console.WriteLine();
+            }
+
+#endregion
+
+
 
 
         }
